@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:ouraring.com)",
+      "WebFetch(domain:mobbin.com)",
+      "WebFetch(domain:www.figma.com)",
+      "WebFetch(domain:titan.as)",
+      "WebFetch(domain:www.funsize.co)",
+      "WebFetch(domain:www.crausser.com)",
+      "WebFetch(domain:static.ouraring.com)"
+    ]
+  }
+}

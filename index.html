@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="HerHealth — Personalised women's health guide from childhood to senior years." />
+  <title>HerHealth — Your Health, Your Way</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ══ WELCOME ══════════════════════════════════════════════ -->
+  <div id="screen-welcome">
+    <div class="welcome-inner">
+
+      <div class="logo-mark">💜</div>
+
+      <div class="welcome-hl">
+        <h1>Your Health,<br>Your Way.</h1>
+        <p>A personalised guide from childhood to your senior years.</p>
+      </div>
+
+      <div class="form-card">
+
+        <!-- Name -->
+        <div class="form-section">
+          <label class="form-lbl" for="name-input">Your name (optional)</label>
+          <input type="text" id="name-input" class="form-input" placeholder="e.g. Aisha, Maria, Priya…" autocomplete="given-name" />
+        </div>
+
+        <!-- Age group -->
+        <div class="form-section">
+          <span class="form-lbl">How old are you?</span>
+          <div id="age-buttons" role="group" aria-label="Age group"></div>
+        </div>
+
+        <!-- Ethnicity -->
+        <div class="form-section">
+          <label class="form-lbl" for="ethnicity-select">Your background</label>
+          <select id="ethnicity-select" class="form-input">
+            <option value="">Select background…</option>
+          </select>
+        </div>
+
+        <!-- Diet -->
+        <div class="form-section">
+          <label class="form-lbl" for="diet-select">Dietary practice</label>
+          <select id="diet-select" class="form-input">
+            <option value="">Select diet…</option>
+          </select>
+        </div>
+
+        <p id="form-error" role="alert" hidden></p>
+
+        <button id="get-guide-btn" class="btn-primary" type="button">
+          Get My Guide →
+        </button>
+
+      </div><!-- /form-card -->
+    </div><!-- /welcome-inner -->
+  </div><!-- /screen-welcome -->
+
+  <!-- ══ DASHBOARD ════════════════════════════════════════════ -->
+  <div id="screen-dashboard" hidden>
+
+    <!-- Hero -->
+    <div class="dash-hero">
+      <div class="container">
+        <div class="dash-hero-inner">
+          <div class="dash-left">
+            <div class="hero-ring" id="hero-ring">💜</div>
+            <div>
+              <div id="dashboard-greeting"></div>
+              <div id="dashboard-subtitle"></div>
+            </div>
+          </div>
+          <button id="back-btn" class="btn-back" type="button">← Change</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab rail -->
+    <div class="tab-rail">
+      <div class="container">
+        <div id="tab-bar" role="tablist"></div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <main class="tab-area">
+      <div class="container">
+        <div id="tab-content" role="tabpanel"></div>
+      </div>
+    </main>
+
+  </div><!-- /screen-dashboard -->
+
+  <!-- ══ FOOTER ════════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <strong>HerHealth</strong> — Free, private, no data stored.
+    <p class="footer-note">
+      General health education only — not a substitute for medical advice.
+      In immediate danger? Call <strong>911</strong>.
+    </p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
