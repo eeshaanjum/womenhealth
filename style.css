@@ -573,3 +573,36 @@ select.form-input option { background: var(--s2); color: var(--text); }
 .choice-btn.selected {
   animation: bounceIn 0.25s ease forwards;
 }
+
+/* ── Action buttons on cards ─────────────────────────────── */
+.card-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.65rem;
+  padding: 0.28rem 0.75rem;
+  background: var(--glow);
+  border: 1px solid var(--p);
+  border-radius: var(--r-pill);
+  color: var(--p);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.18s, color 0.18s;
+  cursor: pointer;
+}
+.card-action-btn:hover { background: var(--p); color: #fff; }
+
+/* Clickable hotline numbers & websites */
+.hl-num a    { color: #FCA5A5; text-decoration: none; }
+.hl-num a:hover { text-decoration: underline; }
+.hl-meta a   { color: var(--t3); font-size: 0.7rem; text-decoration: none; }
+.hl-meta a:hover { color: var(--t2); text-decoration: underline; }
+
+.m-num a     { color: #CE93D8; text-decoration: none; }
+.m-num a:hover { text-decoration: underline; }
+.m-card a.card-action-btn { margin-top: 0.45rem; }
+
+.legal-num a { color: var(--p); text-decoration: none; }
+.legal-web a { color: var(--p); font-size: 0.75rem; text-decoration: none; }
+.legal-web a:hover { text-decoration: underline; }

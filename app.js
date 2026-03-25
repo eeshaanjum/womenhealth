@@ -166,7 +166,8 @@
           <span class="h-card-dot"></span>
           <span>${t.title}</span>
         </div>
-        <p>${t.body}</p>`;
+        <p>${t.body}</p>
+        ${t.action ? `<a class="card-action-btn" href="${t.action.url}" target="_blank" rel="noopener noreferrer">${t.action.label} ↗</a>` : ""}`;
       grid.appendChild(card);
     });
     wrap.appendChild(grid);
@@ -183,7 +184,8 @@
     const list = div("topic-list");
     d.sections.forEach(s => {
       const card = div("t-card");
-      card.innerHTML = `<h3>${s.heading}</h3><p>${s.body}</p>`;
+      card.innerHTML = `<h3>${s.heading}</h3><p>${s.body}</p>
+        ${s.action ? `<a class="card-action-btn" href="${s.action.url}" target="_blank" rel="noopener noreferrer">${s.action.label} ↗</a>` : ""}`;
       list.appendChild(card);
     });
     wrap.appendChild(list);
@@ -324,13 +326,15 @@
     const ageHotlines = healthData.safety.hotlinesByAge[state.ageGroup] || dv.hotlines;
     ageHotlines.forEach(h => {
       const hc = div("hl-card");
+      const phoneHref = parsePhoneHref(h.number);
+      const smsHref   = parseSmsHref(h.text);
       hc.innerHTML = `
         <div class="hl-org">${h.name}</div>
-        <div class="hl-num">${h.number}</div>
+        <div class="hl-num">${phoneHref ? `<a href="${phoneHref}">${h.number}</a>` : h.number}</div>
         <div class="hl-meta">
-          ${h.text ? h.text + "<br>" : ""}
-          ${h.web}<br>${h.hours}
-          ${h.languages ? "<br>" + h.languages : ""}
+          ${smsHref ? `<a class="card-action-btn" href="${smsHref}">${h.text}</a><br>` : (h.text ? h.text + "<br>" : "")}
+          <a href="https://${h.web}" target="_blank" rel="noopener noreferrer">${h.web}</a>
+          <br>${h.hours}${h.languages ? "<br>" + h.languages : ""}
         </div>`;
       hlGrid.appendChild(hc);
     });
@@ -355,10 +359,11 @@
     const lList = div("legal-list");
     legal.resources.forEach(r => {
       const item = div("legal-item");
+      const phoneHref = r.number ? parsePhoneHref(r.number) : null;
       item.innerHTML = `
         <div class="legal-name">${r.name}</div>
-        ${r.number ? `<div class="legal-num">${r.number}</div>` : ""}
-        <div class="legal-web">🌐 ${r.web}</div>
+        ${r.number ? `<div class="legal-num">${phoneHref ? `<a href="${phoneHref}">${r.number}</a>` : r.number}</div>` : ""}
+        <div class="legal-web">🌐 <a href="https://${r.web}" target="_blank" rel="noopener noreferrer">${r.web}</a></div>
         <div class="legal-desc">${r.description}</div>`;
       lList.appendChild(item);
     });
@@ -376,10 +381,12 @@
     );
     mentalHotlines.forEach(h => {
       const mc = div("m-card");
+      const phoneHref = parsePhoneHref(h.number);
       mc.innerHTML = `
         <div class="m-org">${h.name}</div>
-        <div class="m-num">${h.number}</div>
-        <div class="m-hours">${h.hours}</div>`;
+        <div class="m-num">${phoneHref ? `<a href="${phoneHref}">${h.number}</a>` : h.number}</div>
+        <div class="m-hours">${h.hours}</div>
+        <a class="card-action-btn" href="https://${h.web}" target="_blank" rel="noopener noreferrer">${h.web} ↗</a>`;
       mGrid.appendChild(mc);
     });
     mCard.appendChild(mGrid);
@@ -389,6 +396,17 @@
   }
 
   // ── Helpers ──────────────────────────────────────────────────
+  function parsePhoneHref(str) {
+    const digits = str.replace(/[^\d+]/g, "");
+    return digits.length >= 3 ? "tel:" + digits : null;
+  }
+
+  function parseSmsHref(str) {
+    if (!str) return null;
+    const m = str.match(/Text\s+(\w+)\s*(?:→|to)\s*(\d+)/i);
+    return m ? "sms:" + m[2] + "?body=" + encodeURIComponent(m[1]) : null;
+  }
+
   function typeWrite(el, text, speed) {
     el.textContent = "";
     const chars = Array.from(text);

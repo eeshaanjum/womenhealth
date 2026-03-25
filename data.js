@@ -55,16 +55,16 @@ const healthData = {
         { icon: "🩸", title: "Period Products",      body: "Change pads every 4–6 h. Tampons: max 8 hours." },
         { icon: "✨", title: "Skincare",             body: "Gentle cleanser, twice daily. Non-comedogenic for acne." },
         { icon: "👙", title: "Cotton Underwear",     body: "Breathable cotton reduces infections." },
-        { icon: "🦷", title: "Dental Care",          body: "Dentist every 6 months. Extra care around braces." }
+        { icon: "🦷", title: "Dental Care",          body: "Dentist every 6 months. Extra care around braces.", action: { label: "Find a dentist", url: "https://maps.google.com/?q=dentist+near+me" } }
       ]
     },
     youngAdult: {
       intro: "Regular check-ups and daily care protect your future health.",
       tips: [
-        { icon: "🩺", title: "First Gynaecological Visit", body: "First Pap smear at 21 or when sexually active — whichever is sooner." },
-        { icon: "🔬", title: "Pap Smear + HPV",     body: "Every 3 years from age 21. HPV vaccine most effective before 26." },
+        { icon: "🩺", title: "First Gynaecological Visit", body: "First Pap smear at 21 or when sexually active — whichever is sooner.", action: { label: "Find a gynaecologist", url: "https://maps.google.com/?q=gynecologist+near+me" } },
+        { icon: "🔬", title: "Pap Smear + HPV",     body: "Every 3 years from age 21. HPV vaccine most effective before 26.", action: { label: "Find a clinic", url: "https://maps.google.com/?q=gynecologist+near+me" } },
         { icon: "🤲", title: "Breast Self-Exam",    body: "Monthly, a few days after your period. Know your normal." },
-        { icon: "🛡️", title: "Safe Sex",            body: "Use condoms consistently. STI testing if sexually active." },
+        { icon: "🛡️", title: "Safe Sex",            body: "Use condoms consistently. STI testing if sexually active.", action: { label: "Find a sexual health clinic", url: "https://maps.google.com/?q=sexual+health+clinic+near+me" } },
         { icon: "🌿", title: "Vaginal Health",      body: "No douching. Probiotics (yoghurt, kefir) support healthy flora." },
         { icon: "☀️", title: "Daily SPF",           body: "SPF 30+ every single day. Sun damage starts in your 20s." }
       ]
@@ -72,9 +72,9 @@ const healthData = {
     adult: {
       intro: "Busy life — don't skip your check-ups.",
       tips: [
-        { icon: "🩺", title: "Gynaecological Check-Up", body: "Pap smear every 3 years. Annual well-woman exam." },
-        { icon: "🎀", title: "Mammogram",           body: "Start at 40–50 depending on your risk. Ask your doctor." },
-        { icon: "💪", title: "Pelvic Floor",        body: "Kegel exercises daily. Pelvic floor PT after childbirth." },
+        { icon: "🩺", title: "Gynaecological Check-Up", body: "Pap smear every 3 years. Annual well-woman exam.", action: { label: "Find a gynaecologist", url: "https://maps.google.com/?q=gynecologist+near+me" } },
+        { icon: "🎀", title: "Mammogram",           body: "Start at 40–50 depending on your risk. Ask your doctor.", action: { label: "Find a mammogram centre", url: "https://maps.google.com/?q=mammogram+screening+near+me" } },
+        { icon: "💪", title: "Pelvic Floor",        body: "Kegel exercises daily. Pelvic floor PT after childbirth.", action: { label: "Find a pelvic floor physio", url: "https://maps.google.com/?q=pelvic+floor+physical+therapist+near+me" } },
         { icon: "🌸", title: "Postpartum Care",     body: "Peri bottle, breathable pads, 6 weeks healing." },
         { icon: "☀️", title: "Skin & Pigmentation", body: "Pregnancy can cause melasma. SPF 50+ is non-negotiable." },
         { icon: "🦷", title: "Dental in Pregnancy", body: "Pregnancy raises gum disease risk. Keep dental appointments." }
@@ -84,8 +84,8 @@ const healthData = {
       intro: "Perimenopause is real. These habits help.",
       tips: [
         { icon: "💧", title: "Vaginal Dryness",     body: "OTC vaginal moisturisers daily. Lubricants for intimacy." },
-        { icon: "🎀", title: "Mammogram",           body: "Annual or biennial from 40–50. Don't skip." },
-        { icon: "🦴", title: "Bone Density Scan",   body: "Oestrogen protects bones. Baseline DEXA scan now." },
+        { icon: "🎀", title: "Mammogram",           body: "Annual or biennial from 40–50. Don't skip.", action: { label: "Find a mammogram centre", url: "https://maps.google.com/?q=mammogram+screening+near+me" } },
+        { icon: "🦴", title: "Bone Density Scan",   body: "Oestrogen protects bones. Baseline DEXA scan now.", action: { label: "Find a DEXA scan centre", url: "https://maps.google.com/?q=DEXA+bone+density+scan+near+me" } },
         { icon: "💪", title: "Pelvic Floor",        body: "Daily Kegels. Incontinence is common but treatable." },
         { icon: "🌿", title: "Skin Hydration",      body: "Richer moisturiser, daily SPF, retinol at night." },
         { icon: "🌡️", title: "Hot Flush Triggers",  body: "Alcohol, caffeine, spicy food. Keep a log." }
@@ -99,7 +99,7 @@ const healthData = {
         { icon: "🌿", title: "Gentle Skincare",     body: "Rich emollients, gentle cleanser, SPF daily. Watch moles." },
         { icon: "🦷", title: "Oral Health",         body: "Dry mouth raises cavity risk. Hydrate well. 6-monthly dentist." },
         { icon: "🧘", title: "Fall Prevention",     body: "Non-slip mats, good lighting, balance exercise (yoga, tai chi)." },
-        { icon: "🩺", title: "Screenings",          body: "Pap until 65, eye tests, hearing, bone density — annually." }
+        { icon: "🩺", title: "Screenings",          body: "Pap until 65, eye tests, hearing, bone density — annually.", action: { label: "Find a women's health clinic", url: "https://maps.google.com/?q=women%27s+health+clinic+near+me" } }
       ]
     }
   },
@@ -124,7 +124,7 @@ const healthData = {
         { heading: "Period Products",      body: "Pads (easiest), tampons (max 8 h), menstrual cups (eco), period underwear. Try what works for you." },
         { heading: "Cramps",              body: "Heat pack + ibuprofen with food. Walking and light yoga help too." },
         { heading: "PMS",                 body: "Mood swings, bloating, tender breasts the week before. Less salt and caffeine helps." },
-        { heading: "Track Your Cycle",    body: "Use Clue or Flo. Tracking patterns helps you plan and spot issues early." },
+        { heading: "Track Your Cycle",    body: "Use Clue or Flo. Tracking patterns helps you plan and spot issues early.", action: { label: "Download Clue", url: "https://helloclue.com" } },
         { heading: "See a Doctor If…",   body: "No period by 16. Soaking a pad per hour for 2+ hours. Pain that stops daily life." }
       ]
     },
@@ -133,9 +133,9 @@ const healthData = {
       intro: "Know your cycle, know your options.",
       sections: [
         { heading: "Cycle Awareness",     body: "Ovulation happens mid-cycle. Tracking helps with family planning — whether avoiding or trying to conceive." },
-        { heading: "Contraception",       body: "Pill, IUD, implant, injection, condom, diaphragm. Ask a GP or sexual health clinic." },
-        { heading: "PCOS",               body: "1 in 10 women. Signs: irregular periods, acne, excess hair, weight changes. Diagnosable by blood test + ultrasound." },
-        { heading: "Endometriosis",       body: "Severe period pain that disrupts life = red flag. Takes years to diagnose — advocate for yourself." },
+        { heading: "Contraception",       body: "Pill, IUD, implant, injection, condom, diaphragm. Ask a GP or sexual health clinic.", action: { label: "Find a sexual health clinic", url: "https://maps.google.com/?q=sexual+health+clinic+near+me" } },
+        { heading: "PCOS",               body: "1 in 10 women. Signs: irregular periods, acne, excess hair, weight changes. Diagnosable by blood test + ultrasound.", action: { label: "Find a gynaecologist", url: "https://maps.google.com/?q=gynecologist+near+me" } },
+        { heading: "Endometriosis",       body: "Severe period pain that disrupts life = red flag. Takes years to diagnose — advocate for yourself.", action: { label: "Learn more", url: "https://endometriosisassn.org" } },
         { heading: "STI Testing",        body: "Many STIs have no symptoms. Regular testing is normal and responsible." },
         { heading: "Abnormal Bleeding",  body: "Bleeding between periods, after sex, or a sudden change in flow? Get it checked." }
       ]
@@ -144,7 +144,7 @@ const healthData = {
       title: "Periods, Pregnancy & Perimenopause",
       intro: "This decade brings big changes. Stay informed.",
       sections: [
-        { heading: "Planning for Pregnancy", body: "Start folic acid 3 months before. Track ovulation. See your GP for a preconception check." },
+        { heading: "Planning for Pregnancy", body: "Start folic acid 3 months before. Track ovulation. See your GP for a preconception check.", action: { label: "Find an OB-GYN", url: "https://maps.google.com/?q=obgyn+near+me" } },
         { heading: "Fibroids & Polyps",  body: "Common in your 30s. Can cause heavy bleeding or nothing at all. Diagnosed by ultrasound." },
         { heading: "Postpartum Periods", body: "Returns in 6–8 weeks (if not breastfeeding). First cycles can be irregular." },
         { heading: "Early Perimenopause", body: "Irregular cycles, increased PMS, mood shifts in your late 30s are common. You're not imagining it." },
@@ -159,7 +159,7 @@ const healthData = {
         { heading: "Menopause",           body: "Confirmed after 12 consecutive months without a period. Average age: 51." },
         { heading: "Hot Flushes",         body: "Loose clothing, a fan, avoid alcohol/caffeine/stress. HRT and some herbs can help." },
         { heading: "Sleep & Mood",        body: "Night sweats disrupt sleep → mood and focus. CBT is proven effective for this." },
-        { heading: "HRT",                body: "Modern HRT relieves many symptoms and is safe for most women under 60. Discuss with your doctor." },
+        { heading: "HRT",                body: "Modern HRT relieves many symptoms and is safe for most women under 60. Discuss with your doctor.", action: { label: "Find a menopause specialist", url: "https://maps.google.com/?q=menopause+specialist+near+me" } },
         { heading: "Heart Health",        body: "Oestrogen's protective effect fades after menopause. Monitor blood pressure and cholesterol." }
       ]
     },
