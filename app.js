@@ -160,14 +160,24 @@
     const grid = div("card-grid");
     d.tips.forEach(t => {
       const card = div("h-card");
+      let actionHTML = "";
+      if (t.action) {
+        if (t.action.image) {
+          actionHTML = `<button class="card-action-btn" data-img="${t.action.image}">${t.action.label} ↗</button>`;
+        } else {
+          actionHTML = `<a class="card-action-btn" href="${t.action.url}" target="_blank" rel="noopener noreferrer">${t.action.label} ↗</a>`;
+        }
+      }
       card.innerHTML = `
         <div class="h-card-title">
           <span>${t.icon}</span>
           <span class="h-card-dot"></span>
           <span>${t.title}</span>
         </div>
-        <p>${t.body}</p>
-        ${t.action ? `<a class="card-action-btn" href="${t.action.url}" target="_blank" rel="noopener noreferrer">${t.action.label} ↗</a>` : ""}`;
+        <p>${t.body}</p>${actionHTML}`;
+      if (t.action && t.action.image) {
+        card.querySelector("[data-img]").addEventListener("click", () => openImgModal(t.action.image));
+      }
       grid.appendChild(card);
     });
     wrap.appendChild(grid);
@@ -396,6 +406,19 @@
   }
 
   // ── Helpers ──────────────────────────────────────────────────
+  function openImgModal(src) {
+    const modal = document.getElementById("img-modal");
+    document.getElementById("img-modal-img").src = src;
+    modal.hidden = false;
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeImgModal() {
+    document.getElementById("img-modal").hidden = true;
+    document.getElementById("img-modal-img").src = "";
+    document.body.style.overflow = "";
+  }
+
   function parsePhoneHref(str) {
     const digits = str.replace(/[^\d+]/g, "");
     return digits.length >= 3 ? "tel:" + digits : null;
@@ -452,5 +475,10 @@
   }
 
   // ── Init ─────────────────────────────────────────────────────
-  document.addEventListener("DOMContentLoaded", buildForm);
+  document.addEventListener("DOMContentLoaded", () => {
+    buildForm();
+    document.getElementById("img-modal-close").addEventListener("click", closeImgModal);
+    document.querySelector(".img-modal-backdrop").addEventListener("click", closeImgModal);
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeImgModal(); });
+  });
 })();

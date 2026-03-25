@@ -63,7 +63,7 @@ const healthData = {
       tips: [
         { icon: "🩺", title: "First Gynaecological Visit", body: "First Pap smear at 21 or when sexually active — whichever is sooner.", action: { label: "Find a gynaecologist", url: "https://maps.google.com/?q=gynecologist+near+me" } },
         { icon: "🔬", title: "Pap Smear + HPV",     body: "Every 3 years from age 21. HPV vaccine most effective before 26.", action: { label: "Find a clinic", url: "https://maps.google.com/?q=gynecologist+near+me" } },
-        { icon: "🤲", title: "Breast Self-Exam",    body: "Monthly, a few days after your period. Know your normal." },
+        { icon: "🤲", title: "Breast Self-Exam",    body: "Monthly, a few days after your period. Know your normal.", action: { label: "View step-by-step guide", image: "BreastExamAnimation.png" } },
         { icon: "🛡️", title: "Safe Sex",            body: "Use condoms consistently. STI testing if sexually active.", action: { label: "Find a sexual health clinic", url: "https://maps.google.com/?q=sexual+health+clinic+near+me" } },
         { icon: "🌿", title: "Vaginal Health",      body: "No douching. Probiotics (yoghurt, kefir) support healthy flora." },
         { icon: "☀️", title: "Daily SPF",           body: "SPF 30+ every single day. Sun damage starts in your 20s." }

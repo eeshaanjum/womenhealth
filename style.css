@@ -516,6 +516,42 @@ select.form-input option { background: var(--s2); color: var(--text); }
   .hotline-grid, .mental-grid { grid-template-columns: 1fr; }
 }
 
+/* ── Image modal / lightbox ──────────────────────────────── */
+.img-modal {
+  position: fixed; inset: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: center;
+}
+.img-modal[hidden] { display: none !important; }
+
+.img-modal-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.82);
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+}
+.img-modal-box {
+  position: relative; z-index: 1;
+  max-width: 90vw; max-height: 88vh;
+  display: flex; align-items: center; justify-content: center;
+  animation: fadeInUp 0.28s ease;
+}
+.img-modal-box img {
+  max-width: 100%; max-height: 85vh;
+  border-radius: var(--r);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+  display: block;
+}
+.img-modal-close {
+  position: absolute; top: -14px; right: -14px;
+  width: 32px; height: 32px;
+  background: var(--s1); border: 1px solid var(--border2);
+  border-radius: 50%; color: var(--t2);
+  font-size: 0.8rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.18s, color 0.18s;
+}
+.img-modal-close:hover { background: var(--p); color: #fff; border-color: var(--p); }
+
 /* ── Animations ───────────────────────────────────────────── */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(18px); }
