@@ -178,6 +178,38 @@ const healthData = {
 
   // ── NUTRITION ────────────────────────────────────────────
   nutrition: {
+    stageFocusByAge: {
+      child: [
+        { icon: "🦴", title: "Build Bones Now",          body: "Ages 5–12 are a critical window for bone mass. Prioritise calcium and vitamin D every single day." },
+        { icon: "🚫", title: "Limit Sugar Early",        body: "Habits formed now last a lifetime. Choose whole foods over packaged snacks and sugary drinks." },
+        { icon: "🌈", title: "Eat the Rainbow",          body: "5 different colours of fruit and veg daily gives you the full range of vitamins growing bodies need." }
+      ],
+      teen: [
+        { icon: "🩸", title: "Iron When Periods Start",  body: "Iron needs jump to 15 mg once your cycle begins. Red meat, lentils or spinach — always with vitamin C." },
+        { icon: "🦴", title: "Peak Bone Mass Window",    body: "Ages 13–17 are your biggest bone-building window. Hit 1300 mg calcium daily — don't skip it." },
+        { icon: "🚫", title: "Don't Skip Meals",         body: "Crash dieting in your teens disrupts hormones and bone density for life. Fuel your body properly." }
+      ],
+      youngAdult: [
+        { icon: "💊", title: "Start Folic Acid Now",     body: "Take 400 mcg daily if there's any chance of pregnancy — neural tube defects form before you know you're pregnant." },
+        { icon: "🩸", title: "Replace Period Losses",    body: "18 mg iron daily. Always pair plant iron with vitamin C and avoid tea or coffee around iron-rich meals." },
+        { icon: "🦠", title: "Gut = Hormone Health",     body: "Daily fermented foods (yoghurt, kefir, kimchi) support gut flora, which directly affects oestrogen metabolism." }
+      ],
+      adult: [
+        { icon: "🤰", title: "Preconception Nutrition",  body: "Start prenatal vitamins before conceiving. Folate, iron, DHA and iodine are non-negotiable from day one." },
+        { icon: "⚡", title: "Postpartum Recovery",      body: "You need +500 calories while breastfeeding. Protein, iron and DHA are depleted by birth — replenish actively." },
+        { icon: "🦴", title: "Bone Density Foundation",  body: "What you build or lose in your 30s affects your 60s. Calcium, vitamin D and weight-bearing exercise now." }
+      ],
+      middleAge: [
+        { icon: "🫀", title: "Protect Your Heart",       body: "Oestrogen's protective effect fades at menopause. A Mediterranean diet — fish, olive oil, whole grains, legumes — is your best defence." },
+        { icon: "🦴", title: "Fight Bone Loss",          body: "Bone loss accelerates in perimenopause. Calcium 1000–1200 mg + vitamin D 600–800 IU + weight-bearing exercise daily." },
+        { icon: "💪", title: "Preserve Muscle",          body: "Aim for 1.2 g protein per kg of body weight. Muscle loss starts now and accelerates without protein and resistance training." }
+      ],
+      senior: [
+        { icon: "🥩", title: "Protein Every Meal",       body: "Muscle loss is the biggest nutritional threat after 65. Aim for 25–30 g protein per meal — eggs, fish, legumes, dairy." },
+        { icon: "💧", title: "Drink Without Thirst",     body: "The thirst signal weakens with age. Sip water consistently — dehydration causes falls, confusion and UTIs." },
+        { icon: "🔬", title: "Supplement Strategically", body: "Vitamin D 800 IU, B12 and calcium are commonly deficient after 65. Most seniors need all three as supplements." }
+      ]
+    },
     byAge: {
       child: {
         intro: "Growing bodies need real fuel — not just calories.",
@@ -402,6 +434,40 @@ const healthData = {
         "Safety bag: ID, documents, medication, money, phone charger",
         "Tell one trusted person — friend, neighbour, coworker",
         "Clear browser history on shared devices after visiting this page"
+      ]
+    },
+    hotlinesByAge: {
+      child: [
+        { name: "Childhelp Child Abuse",  number: "1-800-422-4453",     text: null,                   web: "childhelp.org",      hours: "24/7",                 languages: "170+ languages" },
+        { name: "Crisis Text Line",       number: "Text HOME → 741741", text: null,                   web: "crisistextline.org", hours: "24/7",                 languages: "English & Spanish" },
+        { name: "988 Crisis Lifeline",    number: "Call or text 988",   text: null,                   web: "988lifeline.org",    hours: "24/7",                 languages: null }
+      ],
+      teen: [
+        { name: "Love Is Respect",        number: "1-866-331-9474",     text: "Text LOVEIS → 22522",  web: "loveisrespect.org",  hours: "24/7",                 languages: "En Español available" },
+        { name: "National DV Hotline",    number: "1-800-799-7233",     text: "Text START → 88788",   web: "thehotline.org",     hours: "24/7",                 languages: "Multiple languages" },
+        { name: "RAINN Sexual Assault",   number: "1-800-656-4673",     text: "Chat at rainn.org",    web: "rainn.org",          hours: "24/7",                 languages: "En Español available" },
+        { name: "Crisis Text Line",       number: "Text HOME → 741741", text: null,                   web: "crisistextline.org", hours: "24/7",                 languages: "English & Spanish" }
+      ],
+      youngAdult: [
+        { name: "National DV Hotline",    number: "1-800-799-7233",     text: "Text START → 88788",   web: "thehotline.org",     hours: "24/7",                 languages: "Multiple languages" },
+        { name: "RAINN Sexual Assault",   number: "1-800-656-4673",     text: "Chat at rainn.org",    web: "rainn.org",          hours: "24/7",                 languages: "En Español available" },
+        { name: "Crisis Text Line",       number: "Text HOME → 741741", text: null,                   web: "crisistextline.org", hours: "24/7",                 languages: "English & Spanish" }
+      ],
+      adult: [
+        { name: "National DV Hotline",    number: "1-800-799-7233",     text: "Text START → 88788",   web: "thehotline.org",     hours: "24/7",                 languages: "Multiple languages" },
+        { name: "RAINN Sexual Assault",   number: "1-800-656-4673",     text: "Chat at rainn.org",    web: "rainn.org",          hours: "24/7",                 languages: "En Español available" },
+        { name: "Postpartum Support Intl",number: "1-800-944-4773",     text: null,                   web: "postpartum.net",     hours: "Callback within hours",languages: null },
+        { name: "Crisis Text Line",       number: "Text HOME → 741741", text: null,                   web: "crisistextline.org", hours: "24/7",                 languages: "English & Spanish" }
+      ],
+      middleAge: [
+        { name: "National DV Hotline",    number: "1-800-799-7233",     text: "Text START → 88788",   web: "thehotline.org",     hours: "24/7",                 languages: "Multiple languages" },
+        { name: "NAMI Helpline",          number: "1-800-950-6264",     text: null,                   web: "nami.org",           hours: "Mon–Fri 10am–10pm ET", languages: null },
+        { name: "Crisis Text Line",       number: "Text HOME → 741741", text: null,                   web: "crisistextline.org", hours: "24/7",                 languages: "English & Spanish" }
+      ],
+      senior: [
+        { name: "Elder Care Locator",     number: "1-800-677-1116",     text: null,                   web: "eldercare.acl.gov",  hours: "Mon–Fri 9am–8pm ET",   languages: "Multiple languages" },
+        { name: "National DV Hotline",    number: "1-800-799-7233",     text: "Text START → 88788",   web: "thehotline.org",     hours: "24/7",                 languages: "Multiple languages" },
+        { name: "NAMI Helpline",          number: "1-800-950-6264",     text: null,                   web: "nami.org",           hours: "Mon–Fri 10am–10pm ET", languages: null }
       ]
     },
     legal: {

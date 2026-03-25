@@ -515,3 +515,61 @@ select.form-input option { background: var(--s2); color: var(--text); }
 @media (max-width: 400px) {
   .hotline-grid, .mental-grid { grid-template-columns: 1fr; }
 }
+
+/* ── Animations ───────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes pulseRing {
+  0%, 100% { box-shadow: 0 0 40px var(--glow); }
+  50%       { box-shadow: 0 0 80px var(--glow), 0 0 0 8px rgba(255,255,255,0.04); }
+}
+@keyframes bounceIn {
+  0%   { transform: scale(0.93); }
+  55%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Screen transitions */
+#screen-welcome {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+#screen-welcome.is-leaving {
+  opacity: 0;
+  transform: translateY(-12px);
+  pointer-events: none;
+}
+#screen-dashboard:not([hidden]) {
+  animation: fadeIn 0.4s ease;
+}
+
+/* Tab content transition */
+.tab-fade {
+  animation: fadeInUp 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Card stagger reveal */
+.reveal-card {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.38s ease, transform 0.38s ease;
+}
+.reveal-card.revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* Logo pulse */
+.logo-mark {
+  animation: pulseRing 3s ease-in-out infinite;
+}
+
+/* Age button selection bounce */
+.choice-btn.selected {
+  animation: bounceIn 0.25s ease forwards;
+}

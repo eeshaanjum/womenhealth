@@ -64,7 +64,10 @@
     if (!state.ethnicity) { showErr("Please select your background / ethnicity."); return; }
     if (!state.diet)      { showErr("Please select your dietary practice."); return; }
     clearErr();
-    renderDashboard();
+    const btn = document.getElementById("get-guide-btn");
+    btn.textContent = "Loading…";
+    btn.disabled = true;
+    setTimeout(renderDashboard, 100);
   }
 
   function showErr(m) { const e = document.getElementById("form-error"); e.textContent = m; e.hidden = false; }
@@ -72,25 +75,48 @@
 
   // ── Dashboard ───────────────────────────────────────────────
   function renderDashboard() {
-    document.getElementById("screen-welcome").hidden = true;
-    document.getElementById("screen-dashboard").hidden = false;
+    const welcome   = document.getElementById("screen-welcome");
+    const dashboard = document.getElementById("screen-dashboard");
 
-    const ag = healthData.ageGroups[state.ageGroup];
-    document.getElementById("hero-ring").textContent = ag.icon;
-    document.getElementById("dashboard-greeting").textContent =
-      state.name ? `Hi, ${state.name} 👋` : "Your Health Guide";
-    document.getElementById("dashboard-subtitle").textContent =
-      `${ag.label} · ${healthData.ethnicities[state.ethnicity]} · ${healthData.diets[state.diet]}`;
+    welcome.classList.add("is-leaving");
 
-    buildTabs();
-    switchTab("hygiene");
+    setTimeout(() => {
+      welcome.hidden = true;
+      welcome.classList.remove("is-leaving");
+      dashboard.hidden = false;
 
-    document.getElementById("back-btn").addEventListener("click", () => {
-      document.getElementById("screen-dashboard").hidden = true;
+      const ag = healthData.ageGroups[state.ageGroup];
+      document.getElementById("hero-ring").textContent = ag.icon;
+      typeWrite(document.getElementById("dashboard-greeting"),
+        state.name ? `Hi, ${state.name} 👋` : "Your Health Guide", 40);
+      document.getElementById("dashboard-subtitle").textContent =
+        `${ag.label} · ${healthData.ethnicities[state.ethnicity]} · ${healthData.diets[state.diet]}`;
+
+      buildTabs();
+      switchTab("hygiene");
+
+      // Replace node to avoid stacking listeners on repeated visits
+      const backBtn = document.getElementById("back-btn");
+      const fresh   = backBtn.cloneNode(true);
+      backBtn.replaceWith(fresh);
+      fresh.addEventListener("click", handleBack);
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 300);
+  }
+
+  function handleBack() {
+    const dashboard = document.getElementById("screen-dashboard");
+    dashboard.style.cssText =
+      "opacity:0;transform:translateY(8px);transition:opacity 0.25s ease,transform 0.25s ease;pointer-events:none;";
+    setTimeout(() => {
+      dashboard.hidden = true;
+      dashboard.style.cssText = "";
       document.getElementById("screen-welcome").hidden = false;
-    });
-
-    window.scrollTo({ top: 0, behavior: "smooth" });
+      const btn = document.getElementById("get-guide-btn");
+      btn.textContent = "Get My Guide →";
+      btn.disabled = false;
+    }, 260);
   }
 
   function buildTabs() {
@@ -115,8 +141,12 @@
     document.querySelectorAll(".tab-btn").forEach(b => b.classList.toggle("active", b.dataset.tab === id));
     const area = document.getElementById("tab-content");
     area.innerHTML = "";
+    area.classList.remove("tab-fade");
+    void area.offsetWidth; // force reflow to restart animation
+    area.classList.add("tab-fade");
     const builders = { hygiene: hygieneSection, menstrual: menstrualSection, nutrition: nutritionSection, safety: safetySection };
     area.appendChild(builders[id]());
+    revealCards(area);
     area.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
@@ -168,6 +198,25 @@
     const wrap  = div("section-wrap");
 
     wrap.appendChild(sHdr("🥗", "Nutrition", ageD.intro));
+
+    // Life-stage priorities
+    const sfData = healthData.nutrition.stageFocusByAge[state.ageGroup] || [];
+    if (sfData.length) {
+      wrap.appendChild(lbl("PRIORITIES FOR YOUR LIFE STAGE"));
+      const sfGrid = div("card-grid");
+      sfData.forEach(f => {
+        const card = div("h-card");
+        card.innerHTML = `
+          <div class="h-card-title">
+            <span>${f.icon}</span>
+            <span class="h-card-dot"></span>
+            <span>${f.title}</span>
+          </div>
+          <p>${f.body}</p>`;
+        sfGrid.appendChild(card);
+      });
+      wrap.appendChild(sfGrid);
+    }
 
     // Nutrient tiles
     const nlbl = lbl("KEY NUTRIENTS — DAILY TARGETS");
@@ -268,10 +317,12 @@
     // DV + emergency
     const dv = healthData.safety.domestic;
     const emCard = div("em-card");
-    emCard.innerHTML = `<span class="em-card-lbl">🚨 ${dv.title}</span><p>${dv.description}</p>`;
+    const dvTitle = state.ageGroup === "child" ? "🏠 Safety at Home & School" : `🚨 ${dv.title}`;
+    emCard.innerHTML = `<span class="em-card-lbl">${dvTitle}</span><p>${dv.description}</p>`;
 
     const hlGrid = div("hotline-grid");
-    dv.hotlines.forEach(h => {
+    const ageHotlines = healthData.safety.hotlinesByAge[state.ageGroup] || dv.hotlines;
+    ageHotlines.forEach(h => {
       const hc = div("hl-card");
       hc.innerHTML = `
         <div class="hl-org">${h.name}</div>
@@ -295,7 +346,9 @@
     emCard.appendChild(tipList);
     wrap.appendChild(emCard);
 
-    // Legal
+    // Legal (not relevant for children)
+    if (state.ageGroup === "child") return wrap;
+
     const legal = healthData.safety.legal;
     const lCard = div("legal-card");
     lCard.innerHTML = `<span class="legal-card-lbl">⚖️ ${legal.title}</span><p>${legal.description}</p>`;
@@ -317,7 +370,11 @@
     const mCard = div("mental-card");
     mCard.innerHTML = `<span class="mental-card-lbl">💜 ${mental.title}</span>`;
     const mGrid = div("mental-grid");
-    mental.hotlines.forEach(h => {
+    const postpartumAges = new Set(["youngAdult", "adult"]);
+    const mentalHotlines = mental.hotlines.filter(h =>
+      h.name !== "Postpartum Support Intl" || postpartumAges.has(state.ageGroup)
+    );
+    mentalHotlines.forEach(h => {
       const mc = div("m-card");
       mc.innerHTML = `
         <div class="m-org">${h.name}</div>
@@ -332,6 +389,31 @@
   }
 
   // ── Helpers ──────────────────────────────────────────────────
+  function typeWrite(el, text, speed) {
+    el.textContent = "";
+    const chars = Array.from(text);
+    let i = 0;
+    (function tick() {
+      if (i < chars.length) { el.textContent += chars[i++]; setTimeout(tick, speed); }
+    })();
+  }
+
+  function revealCards(container) {
+    const cards = container.querySelectorAll(
+      ".h-card,.t-card,.n-tile,.hl-card,.m-card,.sub-card,.legal-item,.age-msg,.em-card,.legal-card,.mental-card"
+    );
+    cards.forEach((c, i) => {
+      c.classList.add("reveal-card");
+      c.style.transitionDelay = Math.min(i * 45, 270) + "ms";
+    });
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add("revealed"); obs.unobserve(entry.target); }
+      });
+    }, { threshold: 0.05 });
+    cards.forEach(c => obs.observe(c));
+  }
+
   function div(cls) { const e = document.createElement("div"); if (cls) e.className = cls; return e; }
 
   function sHdr(icon, title, intro) {
