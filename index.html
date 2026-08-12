@@ -3,38 +3,84 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="HerHealth — Personalised women's health guide from childhood to senior years." />
+  <meta name="description" content="HerHealth — Your personal women's health companion." />
   <title>HerHealth — Your Health, Your Way</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- ══ WELCOME ══════════════════════════════════════════════ -->
-  <div id="screen-welcome">
+  <!-- ══ AUTH SCREEN ═════════════════════════════════════════ -->
+  <div id="screen-auth">
     <div class="welcome-inner">
 
       <div class="logo-mark">💜</div>
 
       <div class="welcome-hl">
-        <h1>Your Health,<br>Your Way.</h1>
-        <p>A personalised guide from childhood to your senior years.</p>
+        <h1>HerHealth</h1>
+        <p>Your personal health companion.</p>
+      </div>
+
+      <div class="form-card">
+        <div class="auth-tabs">
+          <button class="auth-tab active" data-tab="login">Log In</button>
+          <button class="auth-tab" data-tab="signup">Sign Up</button>
+        </div>
+
+        <!-- Login -->
+        <div id="auth-login">
+          <div class="form-section">
+            <label class="form-lbl" for="login-email">Email</label>
+            <input type="email" id="login-email" class="form-input" placeholder="you@example.com" autocomplete="email" />
+          </div>
+          <div class="form-section">
+            <label class="form-lbl" for="login-password">Password</label>
+            <input type="password" id="login-password" class="form-input" placeholder="••••••••" autocomplete="current-password" />
+          </div>
+          <p id="auth-error-login" class="auth-error" hidden></p>
+          <button id="login-btn" class="btn-primary">Log In →</button>
+        </div>
+
+        <!-- Signup -->
+        <div id="auth-signup" hidden>
+          <div class="form-section">
+            <label class="form-lbl" for="signup-email">Email</label>
+            <input type="email" id="signup-email" class="form-input" placeholder="you@example.com" autocomplete="email" />
+          </div>
+          <div class="form-section">
+            <label class="form-lbl" for="signup-password">Password</label>
+            <input type="password" id="signup-password" class="form-input" placeholder="Min. 6 characters" autocomplete="new-password" />
+          </div>
+          <p id="auth-error-signup" class="auth-error" hidden></p>
+          <button id="signup-btn" class="btn-primary">Create Account →</button>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /screen-auth -->
+
+  <!-- ══ SETUP SCREEN (first-time profile) ═══════════════════ -->
+  <div id="screen-welcome" hidden>
+    <div class="welcome-inner">
+
+      <div class="logo-mark">💜</div>
+
+      <div class="welcome-hl">
+        <h1>Set Up<br>Your Profile.</h1>
+        <p>We'll personalise everything to you — just once.</p>
       </div>
 
       <div class="form-card">
 
-        <!-- Name -->
         <div class="form-section">
           <label class="form-lbl" for="name-input">Your name (optional)</label>
           <input type="text" id="name-input" class="form-input" placeholder="e.g. Aisha, Maria, Priya…" autocomplete="given-name" />
         </div>
 
-        <!-- Age group -->
         <div class="form-section">
           <span class="form-lbl">How old are you?</span>
           <div id="age-buttons" role="group" aria-label="Age group"></div>
         </div>
 
-        <!-- Ethnicity -->
         <div class="form-section">
           <label class="form-lbl" for="ethnicity-select">Your background</label>
           <select id="ethnicity-select" class="form-input">
@@ -42,7 +88,6 @@
           </select>
         </div>
 
-        <!-- Diet -->
         <div class="form-section">
           <label class="form-lbl" for="diet-select">Dietary practice</label>
           <select id="diet-select" class="form-input">
@@ -53,17 +98,16 @@
         <p id="form-error" role="alert" hidden></p>
 
         <button id="get-guide-btn" class="btn-primary" type="button">
-          Get My Guide →
+          Save & Open My Guide →
         </button>
 
-      </div><!-- /form-card -->
-    </div><!-- /welcome-inner -->
+      </div>
+    </div>
   </div><!-- /screen-welcome -->
 
   <!-- ══ DASHBOARD ════════════════════════════════════════════ -->
   <div id="screen-dashboard" hidden>
 
-    <!-- Hero -->
     <div class="dash-hero">
       <div class="container">
         <div class="dash-hero-inner">
@@ -74,19 +118,20 @@
               <div id="dashboard-subtitle"></div>
             </div>
           </div>
-          <button id="back-btn" class="btn-back" type="button">← Change</button>
+          <div class="dash-hero-actions">
+            <button id="edit-profile-btn" class="btn-back" type="button">Edit Profile</button>
+            <button id="logout-btn" class="btn-back btn-logout" type="button">Log Out</button>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Tab rail -->
     <div class="tab-rail">
       <div class="container">
         <div id="tab-bar" role="tablist"></div>
       </div>
     </div>
 
-    <!-- Content -->
     <main class="tab-area">
       <div class="container">
         <div id="tab-content" role="tabpanel"></div>
@@ -97,7 +142,7 @@
 
   <!-- ══ FOOTER ════════════════════════════════════════════════ -->
   <footer class="site-footer">
-    <strong>HerHealth</strong> — Free, private, no data stored.
+    <strong>HerHealth</strong> — Private. Secure. All yours.
     <p class="footer-note">
       General health education only — not a substitute for medical advice.
       In immediate danger? Call <strong>911</strong>.
@@ -113,7 +158,15 @@
     </div>
   </div>
 
+  <!-- Firebase SDK (compat) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+  <script src="firebase-config.js"></script>
   <script src="data.js"></script>
+  <script src="db.js"></script>
   <script src="app.js"></script>
+  <script src="auth.js"></script>
 </body>
 </html>

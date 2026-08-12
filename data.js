@@ -498,3 +498,170 @@ const healthData = {
     }
   }
 };
+
+// ── RECIPE DATA ──────────────────────────────────────────────
+// goal tags: fitness | weightLoss | muscle | energy | sleep | stress | mood | iron | protein | gut | bone | sugar
+// diet tags must include all compatible diets
+const recipeData = [
+  {
+    id: "r01", name: "Iron-Boost Lentil Soup", emoji: "🍲",
+    desc: "Red lentils, spinach, and tomatoes in a spiced broth. Vitamin C from tomatoes triples iron absorption.",
+    time: "30 min", diff: "Easy",
+    goals: ["iron", "energy", "gut"],
+    diet: ["omnivore","vegetarian","vegan","halal","kosher","glutenFree","lactoseFree"],
+    yt: "https://www.youtube.com/results?search_query=iron+rich+red+lentil+spinach+soup"
+  },
+  {
+    id: "r02", name: "High-Protein Greek Yoghurt Bowl", emoji: "🥣",
+    desc: "Greek yoghurt, mixed berries, chia seeds, and a drizzle of honey. 20g+ protein per serving.",
+    time: "5 min", diff: "Easy",
+    goals: ["protein", "muscle", "bone", "gut"],
+    diet: ["omnivore","vegetarian","kosher","glutenFree"],
+    yt: "https://www.youtube.com/results?search_query=high+protein+greek+yogurt+bowl+recipe"
+  },
+  {
+    id: "r03", name: "Salmon & Quinoa Power Bowl", emoji: "🐟",
+    desc: "Baked salmon over quinoa with avocado, cucumber, and sesame dressing. Omega-3s for mood and joints.",
+    time: "25 min", diff: "Medium",
+    goals: ["protein", "muscle", "mood", "stress", "bone"],
+    diet: ["omnivore","glutenFree","lactoseFree"],
+    yt: "https://www.youtube.com/results?search_query=salmon+quinoa+power+bowl+recipe"
+  },
+  {
+    id: "r04", name: "Overnight Oats with Banana", emoji: "🌙",
+    desc: "Rolled oats soaked overnight with banana, almond milk, and cinnamon. Great before a workout or exam.",
+    time: "5 min + overnight", diff: "Easy",
+    goals: ["energy", "fitness", "sleep"],
+    diet: ["omnivore","vegetarian","vegan","glutenFree","lactoseFree"],
+    yt: "https://www.youtube.com/results?search_query=overnight+oats+banana+recipe"
+  },
+  {
+    id: "r05", name: "Chickpea Stir-Fry", emoji: "🥘",
+    desc: "Crispy chickpeas with bell peppers, broccoli, and ginger-garlic sauce. Plant protein + fibre combo.",
+    time: "20 min", diff: "Easy",
+    goals: ["protein", "iron", "weightLoss", "gut"],
+    diet: ["omnivore","vegetarian","vegan","halal","glutenFree","lactoseFree"],
+    yt: "https://www.youtube.com/results?search_query=chickpea+stir+fry+healthy+recipe"
+  },
+  {
+    id: "r06", name: "Chamomile & Oat Smoothie", emoji: "🌸",
+    desc: "Chilled chamomile tea blended with banana, oats, and honey. Calms the nervous system before bed.",
+    time: "10 min", diff: "Easy",
+    goals: ["sleep", "stress", "mood"],
+    diet: ["omnivore","vegetarian","vegan","halal","kosher","glutenFree","lactoseFree"],
+    yt: "https://www.youtube.com/results?search_query=calming+sleep+smoothie+recipe+chamomile"
+  },
+  {
+    id: "r07", name: "Turkey & Veggie Lettuce Wraps", emoji: "🥬",
+    desc: "Lean turkey mince with water chestnuts and hoisin in crunchy lettuce cups. Low-carb, high protein.",
+    time: "20 min", diff: "Easy",
+    goals: ["weightLoss", "protein", "fitness"],
+    diet: ["omnivore","glutenFree","lactoseFree"],
+    yt: "https://www.youtube.com/results?search_query=turkey+lettuce+wraps+healthy+low+carb"
+  },
+  {
+    id: "r08", name: "Dark Chocolate & Walnut Energy Balls", emoji: "🍫",
+    desc: "Dates, walnuts, oats, and dark cocoa blended into no-bake bites. Magnesium for mood and energy.",
+    time: "15 min", diff: "Easy",
+    goals: ["energy", "mood", "stress", "sugar"],
+    diet: ["omnivore","vegetarian","vegan","halal","glutenFree","lactoseFree"],
+    yt: "https://www.youtube.com/results?search_query=dark+chocolate+walnut+energy+balls+no+bake"
+  },
+  {
+    id: "r09", name: "Bone Broth Vegetable Soup", emoji: "🦴",
+    desc: "Slow-simmered bone broth with root vegetables. Collagen and minerals for bone and joint health.",
+    time: "40 min", diff: "Easy",
+    goals: ["bone", "gut", "energy"],
+    diet: ["omnivore","glutenFree","lactoseFree"],
+    yt: "https://www.youtube.com/results?search_query=bone+broth+vegetable+soup+recipe+healthy"
+  },
+  {
+    id: "r10", name: "Tofu Scramble with Turmeric", emoji: "🍳",
+    desc: "Crumbled firm tofu with turmeric, nutritional yeast, spinach, and peppers. Vegan protein powerhouse.",
+    time: "15 min", diff: "Easy",
+    goals: ["protein", "iron", "mood"],
+    diet: ["omnivore","vegetarian","vegan","halal","glutenFree","lactoseFree"],
+    yt: "https://www.youtube.com/results?search_query=turmeric+tofu+scramble+vegan+recipe"
+  },
+  {
+    id: "r11", name: "Green Goddess Smoothie", emoji: "💚",
+    desc: "Spinach, mango, ginger, banana, and coconut water. Hydrating, anti-inflammatory, and energising.",
+    time: "5 min", diff: "Easy",
+    goals: ["energy", "fitness", "mood", "stress"],
+    diet: ["omnivore","vegetarian","vegan","halal","kosher","glutenFree","lactoseFree"],
+    yt: "https://www.youtube.com/results?search_query=green+goddess+smoothie+healthy+energy"
+  },
+  {
+    id: "r12", name: "Baked Halal Chicken Shawarma", emoji: "🌯",
+    desc: "Chicken thighs marinated in warm spices, baked and served over garlic rice with salad.",
+    time: "45 min", diff: "Medium",
+    goals: ["protein", "muscle", "fitness"],
+    diet: ["omnivore","halal","glutenFree","lactoseFree"],
+    yt: "https://www.youtube.com/results?search_query=halal+baked+chicken+shawarma+recipe"
+  },
+  {
+    id: "r13", name: "Calcium Kale Caesar Salad", emoji: "🥗",
+    desc: "Massaged kale with tahini Caesar dressing, parmesan, and sunflower seeds. Top plant source of calcium.",
+    time: "15 min", diff: "Easy",
+    goals: ["bone", "weightLoss", "iron"],
+    diet: ["omnivore","vegetarian","kosher","glutenFree"],
+    yt: "https://www.youtube.com/results?search_query=kale+caesar+salad+healthy+recipe"
+  },
+  {
+    id: "r14", name: "Gut-Healing Kimchi Fried Rice", emoji: "🍚",
+    desc: "Brown rice stir-fried with kimchi, egg, and sesame. Fermented kimchi feeds good gut bacteria.",
+    time: "20 min", diff: "Easy",
+    goals: ["gut", "energy", "mood"],
+    diet: ["omnivore","vegetarian","glutenFree","lactoseFree"],
+    yt: "https://www.youtube.com/results?search_query=kimchi+fried+rice+healthy+gut+recipe"
+  },
+  {
+    id: "r15", name: "Ashwagandha Warm Golden Milk", emoji: "🥛",
+    desc: "Oat milk with turmeric, ashwagandha, cinnamon, and black pepper. Adaptogenic stress-reliever.",
+    time: "8 min", diff: "Easy",
+    goals: ["stress", "sleep", "mood"],
+    diet: ["omnivore","vegetarian","vegan","halal","glutenFree","lactoseFree"],
+    yt: "https://www.youtube.com/results?search_query=golden+milk+ashwagandha+stress+recipe"
+  },
+  {
+    id: "r16", name: "High-Fibre Black Bean Tacos", emoji: "🌮",
+    desc: "Black beans, avocado, pickled red onion, and lime crema in corn tortillas. Satisfying and blood-sugar stable.",
+    time: "20 min", diff: "Easy",
+    goals: ["weightLoss", "gut", "sugar", "energy"],
+    diet: ["omnivore","vegetarian","glutenFree"],
+    yt: "https://www.youtube.com/results?search_query=healthy+black+bean+tacos+recipe"
+  },
+  {
+    id: "r17", name: "Pre-Workout Banana Oat Pancakes", emoji: "🥞",
+    desc: "Two-ingredient oat and banana pancakes. Fast carbs for fuel, no sugar crash.",
+    time: "10 min", diff: "Easy",
+    goals: ["fitness", "energy", "weightLoss"],
+    diet: ["omnivore","vegetarian","glutenFree","lactoseFree"],
+    yt: "https://www.youtube.com/results?search_query=banana+oat+pancakes+healthy+2+ingredient"
+  },
+  {
+    id: "r18", name: "Mood-Boosting Berry Acai Bowl", emoji: "🫐",
+    desc: "Frozen acai blended with mixed berries, topped with granola, banana, and cacao nibs. Antioxidant-rich.",
+    time: "10 min", diff: "Easy",
+    goals: ["mood", "stress", "energy", "sugar"],
+    diet: ["omnivore","vegetarian","vegan","halal","glutenFree","lactoseFree"],
+    yt: "https://www.youtube.com/results?search_query=acai+bowl+recipe+mood+boosting"
+  },
+  {
+    id: "r19", name: "Slow-Cooker Dal Makhani", emoji: "🫕",
+    desc: "Black lentils slow-cooked with tomatoes and spices. Protein, iron, and folate in one pot.",
+    time: "6–8 hrs slow cooker", diff: "Easy",
+    goals: ["iron", "protein", "gut", "energy"],
+    diet: ["omnivore","vegetarian","halal","glutenFree"],
+    yt: "https://www.youtube.com/results?search_query=dal+makhani+slow+cooker+recipe"
+  },
+  {
+    id: "r20", name: "Muscle-Gain Cottage Cheese Bowl", emoji: "🧀",
+    desc: "Cottage cheese, sliced peaches, sunflower seeds, and a drizzle of honey. Casein protein for overnight recovery.",
+    time: "5 min", diff: "Easy",
+    goals: ["muscle", "protein", "bone", "sleep"],
+    diet: ["omnivore","vegetarian","kosher","glutenFree"],
+    yt: "https://www.youtube.com/results?search_query=cottage+cheese+bowl+high+protein+recipe"
+  }
+];
+

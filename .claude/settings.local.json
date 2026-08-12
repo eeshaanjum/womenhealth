@@ -8,7 +8,14 @@
       "WebFetch(domain:titan.as)",
       "WebFetch(domain:www.funsize.co)",
       "WebFetch(domain:www.crausser.com)",
-      "WebFetch(domain:static.ouraring.com)"
+      "WebFetch(domain:static.ouraring.com)",
+      "Bash(git -C /Users/oasys/my-personal-project status)",
+      "Skill(run)",
+      "Bash(grep -i -E 'package.json|.py$|Gemfile|Cargo.toml')",
+      "Bash(lsof -i :8000 -sTCP:LISTEN)",
+      "Bash(npx --yes playwright --version)",
+      "Bash(firebase --version)",
+      "Bash(npm install *)"
     ]
   }
 }

@@ -642,3 +642,388 @@ select.form-input option { background: var(--s2); color: var(--text); }
 .legal-num a { color: var(--p); text-decoration: none; }
 .legal-web a { color: var(--p); font-size: 0.75rem; text-decoration: none; }
 .legal-web a:hover { text-decoration: underline; }
+
+/* ══════════════════════════════════════════════════════════
+   AUTH SCREEN
+══════════════════════════════════════════════════════════ */
+#screen-auth {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 3.5rem 1.25rem 5rem;
+}
+
+.auth-tabs {
+  display: flex;
+  gap: 0;
+  background: var(--s2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 3px;
+  margin-bottom: 1.5rem;
+}
+
+.auth-tab {
+  flex: 1;
+  padding: 0.5rem;
+  background: transparent;
+  border: none;
+  border-radius: calc(var(--r-sm) - 2px);
+  color: var(--t2);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+}
+.auth-tab.active {
+  background: var(--p);
+  color: #fff;
+}
+
+.auth-error {
+  background: rgba(239,68,68,.1);
+  border: 1px solid rgba(239,68,68,.25);
+  color: #FCA5A5;
+  border-radius: var(--r-sm);
+  padding: 0.55rem 0.85rem;
+  font-size: 0.8rem;
+  margin-bottom: 0.9rem;
+}
+
+/* ── Dashboard hero actions ─────────────────────────────── */
+.dash-hero-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+.btn-logout {
+  border-color: rgba(239,68,68,.3);
+  color: #FCA5A5;
+}
+.btn-logout:hover { border-color: rgba(239,68,68,.7); color: #FCA5A5; background: rgba(239,68,68,.08); }
+
+/* ══════════════════════════════════════════════════════════
+   GOALS TAB
+══════════════════════════════════════════════════════════ */
+.goal-form-card {
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.goal-form-row {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.goal-cat-select {
+  flex: 1;
+  min-width: 0;
+}
+
+.btn-add-goal {
+  padding: 0.65rem 1.1rem;
+  background: var(--p);
+  color: #fff;
+  border: none;
+  border-radius: var(--r-sm);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.18s;
+  flex-shrink: 0;
+}
+.btn-add-goal:hover { opacity: 0.85; }
+
+.goals-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.goal-card {
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  transition: border-color 0.18s;
+}
+.goal-card:hover { border-color: var(--border2); }
+.goal-card.goal-done { opacity: 0.5; }
+
+.goal-check-label {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  cursor: pointer;
+  flex: 1;
+  min-width: 0;
+}
+
+.goal-checkbox {
+  width: 16px; height: 16px;
+  accent-color: var(--p);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.goal-text {
+  font-size: 0.875rem;
+  color: var(--text);
+  line-height: 1.4;
+}
+.goal-done .goal-text { text-decoration: line-through; }
+
+.goal-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.goal-cat-badge {
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 0.18rem 0.55rem;
+  background: var(--glow);
+  border: 1px solid var(--p);
+  color: var(--p);
+  border-radius: var(--r-pill);
+  white-space: nowrap;
+}
+
+.goal-delete-btn {
+  background: none;
+  border: none;
+  color: var(--t3);
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  transition: color 0.18s, background 0.18s;
+}
+.goal-delete-btn:hover { color: #FCA5A5; background: rgba(239,68,68,.08); }
+
+.empty-state {
+  color: var(--t3);
+  font-size: 0.82rem;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+/* ══════════════════════════════════════════════════════════
+   RECIPES TAB
+══════════════════════════════════════════════════════════ */
+.recipe-note {
+  font-size: 0.78rem;
+  color: var(--t3);
+  padding: 0.5rem 0.75rem;
+  background: var(--glow);
+  border: 1px solid var(--p);
+  border-radius: var(--r-sm);
+}
+
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 0.65rem;
+}
+
+.recipe-card {
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.1rem;
+  display: flex;
+  gap: 0.9rem;
+  transition: border-color 0.18s, box-shadow 0.18s;
+}
+.recipe-card:hover { border-color: var(--border2); box-shadow: 0 4px 20px rgba(0,0,0,.3); }
+
+.recipe-emoji {
+  font-size: 2rem;
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 0.1rem;
+}
+
+.recipe-body { display: flex; flex-direction: column; gap: 0.35rem; min-width: 0; }
+
+.recipe-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.recipe-desc {
+  font-size: 0.78rem;
+  color: var(--t2);
+  line-height: 1.45;
+}
+
+.recipe-meta {
+  display: flex;
+  gap: 0.6rem;
+  font-size: 0.7rem;
+  color: var(--t3);
+}
+
+.recipe-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.recipe-tag {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.12rem 0.45rem;
+  background: var(--s2);
+  border: 1px solid var(--border);
+  color: var(--t3);
+  border-radius: var(--r-pill);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.recipe-tag-match {
+  border-color: var(--p);
+  color: var(--p);
+  background: var(--glow);
+}
+
+.recipe-yt-btn {
+  margin-top: 0.5rem;
+  align-self: flex-start;
+}
+
+/* ══════════════════════════════════════════════════════════
+   DIARY TAB
+══════════════════════════════════════════════════════════ */
+.diary-form-card {
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.diary-date-row { display: flex; flex-direction: column; gap: 0.3rem; }
+
+.diary-date-input {
+  max-width: 200px;
+  color-scheme: dark;
+}
+
+.diary-textarea {
+  width: 100%;
+  min-height: 160px;
+  padding: 0.75rem 0.9rem;
+  background: var(--s2);
+  border: 1px solid var(--border2);
+  border-radius: var(--r-sm);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  resize: vertical;
+  transition: border-color 0.18s, box-shadow 0.18s;
+}
+.diary-textarea::placeholder { color: var(--t3); }
+.diary-textarea:focus { outline: none; border-color: var(--p); box-shadow: 0 0 0 3px var(--glow); }
+
+.diary-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.diary-char {
+  font-size: 0.7rem;
+  color: var(--t3);
+}
+
+.diary-save-btn {
+  width: auto;
+  padding: 0.6rem 1.4rem;
+}
+
+.diary-msg {
+  font-size: 0.78rem;
+  color: #FCA5A5;
+}
+
+.diary-past {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.diary-entry-card {
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 0.85rem 1rem;
+  transition: border-color 0.18s;
+}
+.diary-entry-card:hover { border-color: var(--border2); }
+
+.diary-entry-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.35rem;
+}
+
+.diary-entry-date {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--p);
+}
+
+.diary-delete-btn {
+  background: none;
+  border: none;
+  color: var(--t3);
+  cursor: pointer;
+  font-size: 0.75rem;
+  padding: 0.15rem 0.35rem;
+  border-radius: 4px;
+  transition: color 0.18s, background 0.18s;
+}
+.diary-delete-btn:hover { color: #FCA5A5; background: rgba(239,68,68,.08); }
+
+.diary-entry-preview {
+  font-size: 0.8rem;
+  color: var(--t2);
+  line-height: 1.5;
+  cursor: pointer;
+  white-space: pre-wrap;
+}
+.diary-entry-preview:hover { color: var(--text); }
+
+/* ── Responsive additions ───────────────────────────────── */
+@media (max-width: 600px) {
+  #screen-auth { padding: 2.5rem 1rem 4rem; }
+  .goal-form-row { flex-direction: column; align-items: stretch; }
+  .recipe-grid { grid-template-columns: 1fr; }
+  .recipe-card { flex-direction: column; }
+  .diary-form-footer { flex-direction: column; align-items: flex-start; }
+  .diary-save-btn { width: 100%; }
+  .dash-hero-actions { gap: 0.4rem; }
+}
